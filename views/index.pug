@@ -1,12 +1,12 @@
+doctype html
 html
     head
         title "title name here"
     body
         header
             h1 Welcome to Data Runner.io
-            p  #{username}
             ul 
-                each usersame, i in usernames
-                    li= username.username
-         
+                each val in users
+                 p #{val.username}
+
 

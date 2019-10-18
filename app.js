@@ -66,13 +66,13 @@ let User = require('./models/user.model')
 
 app.get('/', function(req, res) {
 
-     User.find({}, function(err, usernames){
+     User.find(function(err, username){
             if(err){
                 console.log(err)
-            }else {
+            }else if(username) {
 
         res.render('index', {
-                username: usernames
+                "users": username
 
             });
         }
