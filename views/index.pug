@@ -1,12 +1,9 @@
-doctype html
-html
-    head
-        title "title name here"
-    body
-        header
-            h1 Welcome to Data Runner.io
-            ul 
-                each val in users
-                 p #{val.username}
+extends layout
 
+block content
+    ul 
+        each val in users
+            p Hello #{val.username}
+    br
+    
 

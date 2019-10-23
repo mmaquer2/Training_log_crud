@@ -1,3 +1,4 @@
 ## Training Log App
 
-- practice app made using JS, node, mongodb
+- Practice app made using JS, node, mongodb
+

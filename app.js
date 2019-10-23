@@ -8,7 +8,7 @@ const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 5555;
+const port = process.env.PORT || 5051;
 
 app.use(cors());
 app.use(express.json());
@@ -24,9 +24,13 @@ const options = {
 
 // Body Parser Middleware
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
+
+//Set the public folder
+
+app.use(express.static(path.join(__dirname,'public')));
 
 //connection to url for database, create database server connection
 
@@ -85,13 +89,33 @@ app.get('/', function(req, res) {
 
 app.get('/users/add',function(req,res){
     res.render('login'), {
-        title: 'Add Users'
-    
+        title: 'Add Users' 
     }
-
-
 });
 
+
+//app Submit post route
+
+app.post('/users/add', function(req, res){
+    let name = new User();
+    name.username =req.body.username;
+
+    name.save(function(err){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else {
+            res.redirect('/')
+        }
+
+    });
+   
+});
+
+//test for post requets
+//console.log('submitted');
+//return;
 
     
 
